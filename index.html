@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Event Payment App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <div class="container">
+            <div class="landing-header">
+                <div class="app-icon">
+                    <span class="material-icons">account_balance</span>
+                </div>
+                <h1>Hostel Event Payment</h1>
+                <p class="landing-subtitle">Secure and easy payment collection for hostel events</p>
+            </div>
+            
+            <div class="landing-options">
+                <div class="option-card" id="admin-option">
+                    <span class="material-icons">admin_panel_settings</span>
+                    <h3>Admin Panel</h3>
+                    <p>Manage payments and users</p>
+                </div>
+                
+                <div class="option-card" id="user-option">
+                    <span class="material-icons">person</span>
+                    <h3>Student Portal</h3>
+                    <p>Make payments and view history</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-page" class="page">
+        <div class="container">
+            <div class="login-header">
+                <button class="back-btn" id="back-to-landing">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <h2 id="login-title">Login</h2>
+            </div>
+            
+            <div class="card login-card">
+                <div class="card__body">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label class="form-label" for="username">Username/Email</label>
+                            <input type="text" id="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="password">Password</label>
+                            <input type="password" id="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                    </form>
+                    
+                    <div id="user-register-link" class="register-link hidden">
+                        <p>New student? <a href="#" id="register-link">Register here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Page -->
+    <div id="register-page" class="page">
+        <div class="container">
+            <div class="login-header">
+                <button class="back-btn" id="back-to-login">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <h2>Register</h2>
+            </div>
+            
+            <div class="card login-card">
+                <div class="card__body">
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label class="form-label" for="reg-name">Full Name</label>
+                            <input type="text" id="reg-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reg-email">Email</label>
+                            <input type="email" id="reg-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reg-phone">Phone Number</label>
+                            <input type="tel" id="reg-phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reg-room">Hostel Room</label>
+                            <input type="text" id="reg-room" class="form-control" placeholder="e.g., A-101" required>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="page">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Admin Dashboard</h2>
+                <button class="btn btn--outline btn--sm" id="admin-logout">
+                    <span class="material-icons">logout</span>
+                    Logout
+                </button>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <span class="material-icons">account_balance_wallet</span>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-collected">₹1,000</h3>
+                        <p>Total Collected</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <span class="material-icons">group</span>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-users">3</h3>
+                        <p>Total Students</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <span class="material-icons">check_circle</span>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="paid-users">2</h3>
+                        <p>Paid Students</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <span class="material-icons">pending</span>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="pending-users">1</h3>
+                        <p>Pending Payments</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="payments">
+                    <span class="material-icons">payment</span>
+                    Payments
+                </button>
+                <button class="tab-btn" data-tab="users">
+                    <span class="material-icons">people</span>
+                    Users
+                </button>
+                <button class="tab-btn" data-tab="notifications">
+                    <span class="material-icons">notifications</span>
+                    Notifications
+                </button>
+            </div>
+            
+            <div id="payments-tab" class="tab-content active">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Recent Payments</h3>
+                        <div id="payments-list" class="payments-list"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="users-tab" class="tab-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>User Management</h3>
+                        <div id="users-list" class="users-list"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="notifications-tab" class="tab-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Send Notifications</h3>
+                        <div class="notification-actions">
+                            <button class="btn btn--primary" id="send-reminders">
+                                <span class="material-icons">notifications_active</span>
+                                Send Payment Reminders
+                            </button>
+                        </div>
+                        <div id="notification-log" class="notification-log"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Dashboard -->
+    <div id="user-dashboard" class="page">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2 id="user-welcome">Welcome, Student</h2>
+                <button class="btn btn--outline btn--sm" id="user-logout">
+                    <span class="material-icons">logout</span>
+                    Logout
+                </button>
+            </div>
+            
+            <div class="event-info card">
+                <div class="card__body">
+                    <h3>Annual Hostel Cultural Fest</h3>
+                    <p>Join us for an amazing cultural festival with performances, food stalls, and games</p>
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <span class="material-icons">calendar_today</span>
+                            <span>Deadline: February 1, 2025</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="material-icons">currency_rupee</span>
+                            <span>Amount: ₹500</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-status card">
+                <div class="card__body">
+                    <div id="payment-status-content"></div>
+                </div>
+            </div>
+            
+            <div class="user-tabs">
+                <button class="tab-btn active" data-tab="payment">
+                    <span class="material-icons">payment</span>
+                    Make Payment
+                </button>
+                <button class="tab-btn" data-tab="history">
+                    <span class="material-icons">history</span>
+                    Payment History
+                </button>
+            </div>
+            
+            <div id="payment-tab" class="tab-content active">
+                <div class="card">
+                    <div class="card__body">
+                        <div id="payment-form-container">
+                            <h3>Make Payment</h3>
+                            <form id="payment-form">
+                                <div class="form-group">
+                                    <label class="form-label">Amount</label>
+                                    <input type="number" class="form-control" value="500" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="payment-method">Payment Method</label>
+                                    <select id="payment-method" class="form-control" required>
+                                        <option value="">Select Payment Method</option>
+                                        <option value="UPI">UPI</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Debit Card">Debit Card</option>
+                                        <option value="Net Banking">Net Banking</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn--primary btn--full-width">
+                                    <span class="material-icons">payment</span>
+                                    Pay ₹500
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="history-tab" class="tab-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Payment History</h3>
+                        <div id="user-payment-history"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Processing Modal -->
+    <div id="payment-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="payment-processing">
+                <div class="loader"></div>
+                <h3>Processing Payment...</h3>
+                <p>Please wait while we process your payment</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SMS Notification Modal -->
+    <div id="sms-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="sms-notification">
+                <span class="material-icons success-icon">check_circle</span>
+                <h3>Payment Successful!</h3>
+                <div class="sms-message">
+                    <h4>SMS Notification Sent:</h4>
+                    <p id="sms-text"></p>
+                </div>
+                <button class="btn btn--primary" id="close-sms-modal">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
